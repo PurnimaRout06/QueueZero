@@ -6,6 +6,8 @@ QueueZero is an AI-powered administrative resolution agent built on **Proof-Carr
 
 Instead of acting like a generic chatbot that guesses whether you are covered, QueueZero reads your uploaded invoices and receipts, retrieves applicable policy clauses through independent stdio MCP servers, flags missing evidence and exclusions honestly, drafts a formal complaint grounded strictly in verified facts, and requires explicit human approval before anything leaves your workspace.
 
+wHackiest Hackathon - Track 1
+
 ---
 
 ## Why QueueZero?
