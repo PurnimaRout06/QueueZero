@@ -1,0 +1,6 @@
+{
+  "name": "QueueZero",
+  "description": "AI-powered administrative resolution agent with proof-carrying automation and MCP server orchestration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

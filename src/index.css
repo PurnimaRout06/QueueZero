@@ -1,0 +1,202 @@
+@import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    color: #0f172a;
+    background-color: #f8fafc;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom React Flow adjustments for QueueZero dark navy workflow canvas */
+.qz-workflow-canvas .react-flow__controls {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(2, 6, 23, 0.45);
+}
+
+.qz-workflow-canvas .react-flow__controls-button {
+  background: transparent;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  fill: #cbd5e1;
+  color: #cbd5e1;
+}
+
+.qz-workflow-canvas .react-flow__controls-button:hover {
+  background: rgba(30, 41, 59, 0.9);
+  fill: #ffffff;
+}
+
+/* QueueZero Landing & Workflow Showcase Keyframes (compositor-only transforms/opacity) */
+@keyframes qz-marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes qz-sheet-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes qz-sheet-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes qz-scan-beam {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0%, 0);
+  }
+  12% {
+    opacity: 0.9;
+  }
+  88% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes qz-sweep-tl {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(6px, 6px, 0);
+  }
+}
+
+@keyframes qz-sweep-tr {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(-6px, 6px, 0);
+  }
+}
+
+@keyframes qz-sweep-bl {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(6px, -6px, 0);
+  }
+}
+
+@keyframes qz-sweep-br {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(-6px, -6px, 0);
+  }
+}
+
+@keyframes qz-caret-blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.qz-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: qz-marquee-scroll 48s linear infinite;
+  will-change: transform;
+}
+
+.qz-marquee-viewport:hover .qz-marquee-track {
+  animation-play-state: paused;
+}
+
+.qz-sheet-stage {
+  animation:
+    qz-sheet-in 0.7s cubic-bezier(0.2, 0.7, 0.25, 1) both,
+    qz-sheet-float 9s ease-in-out 0.7s infinite;
+  will-change: transform, opacity;
+}
+
+.qz-scan-line {
+  animation: qz-scan-beam 5.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+.qz-caret {
+  animation: qz-caret-blink 0.8s steps(2, start) infinite;
+}
+
+.qz-bracket-tl {
+  animation: qz-sweep-tl 5.5s ease-in-out infinite;
+}
+.qz-bracket-tr {
+  animation: qz-sweep-tr 5.5s ease-in-out infinite;
+}
+.qz-bracket-bl {
+  animation: qz-sweep-bl 5.5s ease-in-out infinite;
+}
+.qz-bracket-br {
+  animation: qz-sweep-br 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qz-motion-pulse,
+  .qz-edge-particle,
+  .qz-marquee-track,
+  .qz-sheet-stage,
+  .qz-scan-line,
+  .qz-caret,
+  .qz-bracket-tl,
+  .qz-bracket-tr,
+  .qz-bracket-bl,
+  .qz-bracket-br {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
